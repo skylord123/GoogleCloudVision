@@ -50,7 +50,9 @@ component hint="" accessors="true" singleton {
 	 */	
 	public string function sendRequest(	body ) {	
 	    var httpService = new http(); 
-		httpService.setEncodeUrl(false);
+	    if(structKeyExists(httpService, 'setEncodeUrl')) {
+	    	httpService.setEncodeUrl(false);
+	    }
 	    httpService.setMethod("POST"); 
 	    
 	    if(structKeyExists(arguments,'endpoint'))
